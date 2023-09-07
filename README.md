@@ -1,6 +1,8 @@
 # ROS2_nodes
 ros2 nodes for Information Model
 
+ROS2 version : foxy
+
 **All of these nodes execute their internal operations automatically.**
 
 ---
@@ -29,4 +31,19 @@ This node is for a robot that changes its speed forward and backward every 3 sec
 ```bash
 docker build -t teleop_auto .
 docker run -it -d --network=host --privileged teleop_auto
+```
+
+---
+### lidar_node
+
+This node runs the 3D Lidar using the source code provided by [Yujin Lidar](http://lidar.yujinrobot.com/). 
+
+You can find the referenced GitHub repository at https://github.com/yujinrobot/yujin_lidar_v2/tree/main/driver_ros2_foxy_ubuntu2004/yrl3_v2_ros2_package.
+
+- lidar source code
+  - referecne : **https://github.com/yujinrobot/yujin_lidar_v2/tree/main/driver_ros2_foxy_ubuntu2004/**
+- Dockerfile
+```bash
+docker build -t lidar .
+docker run -it -d --network=host --privileged lidar
 ```
