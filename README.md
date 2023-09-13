@@ -5,7 +5,22 @@ ROS2 version : foxy
 
 **All of these nodes execute their internal operations automatically.**
 
----
+## Jackal
+
+### bringup_node
+
+This node enables the internal topics and control for the jackal
+
+- dependencies.repos
+- Dockerfile
+- fastrtps-profile.xml
+```bash
+cd ~/ROS2_nodes/jackal/bringup_node
+
+docker build -t bringup .
+docker run -it -d --network=host --privileged -v /dev/jackal:/dev/jackal bringup
+```
+
 ### camera_node
 
 This node publishes and subscribes to the sensor_msgs/msg/CompressedImage topic type using a RealSense camera.
@@ -13,6 +28,8 @@ This node publishes and subscribes to the sensor_msgs/msg/CompressedImage topic 
 - publisher, subscriber source code
 - Dockerfile
 ```bash
+cd ~/ROS2_nodes/jackal/camera_node
+
 // image publisher
 docker build -t image_publisher -f publisher.dockerfile
 docker run -it -d --network=host --privileged image_publisher
@@ -21,7 +38,7 @@ docker run -it -d --network=host --privileged image_publisher
 docker build -t image_subscriber -f subscriber.dockerfile
 docker run -it -d --network=host --privileged image_subscriber
 ```
----
+
 ### teleop_node
 
 This node is for a robot that changes its speed forward and backward every 3 seconds and moves.
@@ -29,11 +46,12 @@ This node is for a robot that changes its speed forward and backward every 3 sec
 - teleop source code
 - Dockerfile
 ```bash
+cd ~/ROS2_nodes/teleop_node
+
 docker build -t teleop_auto .
 docker run -it -d --network=host --privileged teleop_auto
 ```
 
----
 ### lidar_node
 
 This node runs the 3D Lidar using the source code provided by [Yujin Lidar](http://lidar.yujinrobot.com/). 
@@ -43,7 +61,10 @@ You can find the referenced GitHub repository at https://github.com/yujinrobot/y
 - lidar source code
   - referecne : **https://github.com/yujinrobot/yujin_lidar_v2/tree/main/driver_ros2_foxy_ubuntu2004/**
 - Dockerfile
+- fastrtps-profile.xml
 ```bash
+cd ~/ROS2_nodes/jackal/lidar_node
+
 docker build -t lidar .
 docker run -it -d --network=host --privileged lidar
 ```
