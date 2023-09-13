@@ -46,24 +46,6 @@ docker build -t jackal_image_subscriber -f subscriber.dockerfile
 docker run -it -d --network=host --privileged jackal_image_subscriber
 ```
 
-### teleop_node
-
-This node is for a robot that changes its speed forward and backward every 3 seconds and moves.
-
-- teleop source code
-- Dockerfile
-
-Publish Topic
-  - `/cmd_vel` : geometry_msgs/msg/Twist
-
-**How To Usage**
-```bash
-cd ~/ROS2_nodes/teleop_node
-
-docker build -t teleop_auto .
-docker run -it -d --network=host --privileged teleop_auto
-```
-
 ### lidar_node
 
 This node runs the 3D Lidar using the source code provided by [Yujin Lidar](http://lidar.yujinrobot.com/). 
@@ -141,4 +123,24 @@ cd ~/ROS2_nodes/turtlebot3/laser_avoidance_node
 
 docker build -t tb3_laser_avoidance_node .
 docker run -it -d --network=host --privileged tb3_laser_avoidance_node
+```
+
+## Common
+
+### teleop_node
+
+This node is for a robot that changes its speed forward and backward every 3 seconds and moves.
+
+- teleop source code
+- Dockerfile
+
+Publish Topic
+  - `/cmd_vel` : geometry_msgs/msg/Twist
+
+**How To Usage**
+```bash
+cd ~/ROS2_nodes/common/teleop_node
+
+docker build -t teleop_auto .
+docker run -it -d --network=host --privileged teleop_auto
 ```
