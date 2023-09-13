@@ -30,7 +30,7 @@ This node publishes and subscribes to the sensor_msgs/msg/CompressedImage topic 
 - publisher, subscriber source code
 - Dockerfile
 
-Publish Topic
+Publish/Subscribe Topic
   - /image_raw/compressed
 
 **How To Usage**
