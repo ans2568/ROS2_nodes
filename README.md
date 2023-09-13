@@ -54,7 +54,7 @@ This node is for a robot that changes its speed forward and backward every 3 sec
 - Dockerfile
 
 Publish Topic
-  - /cmd_vel : geometry_msgs/msg/Twist
+  - `/cmd_vel` : geometry_msgs/msg/Twist
 
 **How To Usage**
 ```bash
@@ -76,7 +76,7 @@ You can find the referenced GitHub repository at https://github.com/yujinrobot/y
 - fastrtps-profile.xml
 
 Publish Topic
-  - /yrl_scan : sensor_msgs/msg/PointCloud2
+  - `/yrl_scan` : sensor_msgs/msg/PointCloud2
 
 **How To Usage**
 ```bash
@@ -110,8 +110,8 @@ This node publishes to the sensor_msgs/msg/CompressedImage topic type using a Tu
 - Dockerfile
 
 Publish Topic
-  - /image_raw : sensor_msgs/msg/Image
-  - /image_raw/compressed : sensor_msgs/msg/CompressedImage
+  - `/image_raw` : sensor_msgs/msg/Image
+  - `/image_raw/compressed` : sensor_msgs/msg/CompressedImage
 
 **How To Usage**
 ```bash
@@ -130,10 +130,10 @@ This node that uses a 2D lidar to avoid obstacles.
 - fastrtps-profile.xml
 
 Subscribe Topic
-  - /scan : sensor_msgs/msg/LaserScan
+  - `/scan` : sensor_msgs/msg/LaserScan
 
 Publish Topic
-  - /cmd_vel : geometry_msgs/msg/Twist
+  - `/cmd_vel` : geometry_msgs/msg/Twist
 
 **How To Usage**
 ```bash
