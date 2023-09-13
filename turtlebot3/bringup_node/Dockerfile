@@ -8,4 +8,4 @@ WORKDIR /ros2_ws
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && colcon build
 ENV TURTLEBOT3_MODEL=waffle_pi
 ENV LDS_MODEL=LDS-01
-CMD ["/bin/bash", "-c", ". install/setup.bash && ros2 launch turtlebot3_bringup robot.launch.py"]
+CMD ["/bin/bash", "-c", "export FASTRTPS_DEFAULT_PROFILES_FILE=fastrtps-profile.xml && . install/setup.bash && ros2 launch turtlebot3_bringup robot.launch.py"]
