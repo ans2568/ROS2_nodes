@@ -4,4 +4,4 @@ RUN pip3 install -U argcomplete
 WORKDIR /ros2_ws
 COPY . /ros2_ws
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && colcon build --symlink-install
-CMD ["/bin/bash", "-c", ". install/setup.bash && ros2 run yrl3_v2_ros2_package yrl3_v2_ros2_node"]
+CMD ["/bin/bash", "-c", "export FASTRTPS_DEFAULT_PROFILES_FILE=fastrtps-profile.xml && . install/setup.bash && ros2 run yrl3_v2_ros2_package yrl3_v2_ros2_node"]
