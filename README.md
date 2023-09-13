@@ -31,7 +31,7 @@ This node publishes and subscribes to the sensor_msgs/msg/CompressedImage topic 
 - Dockerfile
 
 Publish/Subscribe Topic
-  - /image_raw/compressed : sensor_msgs/msg/CompressedImage
+  - `/image_raw/compressed` : sensor_msgs/msg/CompressedImage
 
 **How To Usage**
 ```bash
