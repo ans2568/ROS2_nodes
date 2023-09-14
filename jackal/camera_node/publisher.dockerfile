@@ -13,4 +13,4 @@ WORKDIR /root/ros2_ws/src
 COPY . /root/ros2_ws/src
 WORKDIR /root/ros2_ws
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && colcon build
-CMD ["/bin/bash", "-c", ". install/setup.bash && ros2 run realsense_camera realsense_camera_node"]
+CMD ["/bin/bash", "-c", "export FASTRTPS_DEFAULT_PROFILES_FILE=src/fastrtps-profile.xml && . install/setup.bash && ros2 run realsense_camera realsense_camera_node"]
