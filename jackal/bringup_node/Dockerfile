@@ -17,4 +17,5 @@ RUN . install/setup.sh && ros2 run micro_ros_setup create_agent_ws.sh && ros2 ru
 RUN vcs import src < dependencies.repos
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && colcon build
+COPY control.yaml /ros2_ws/src/jackal/jackal_control/config/control.yaml
 CMD ["/bin/bash", "-c", "export FASTRTPS_DEFAULT_PROFILES_FILE=fastrtps-profile.xml && . install/setup.bash && ros2 launch jackal_robot bringup.launch.py"]
