@@ -146,8 +146,8 @@ void Yujin_Lidar::initParamSrv()
 {
   /* 1. Declare parameter lists */
   this->declare_parameter("lidar_ip", (std::string)"192.168.1.250");
-  this->declare_parameter("min_z", (double)0);
-  this->declare_parameter("max_z", (double)5.0f);
+  this->declare_parameter("min_z", (double)-0.2f);
+  this->declare_parameter("max_z", (double)2.0f);
   this->declare_parameter("min_y", (double)-35.0f);
   this->declare_parameter("max_y", (double)35.0f);
   this->declare_parameter("min_x", (double)-35.0f);

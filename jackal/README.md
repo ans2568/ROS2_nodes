@@ -49,6 +49,24 @@ docker run -it -d --network=host --privileged jackal_image_subscriber
 
 This node runs the 3D Lidar using the source code provided by [Yujin Lidar](http://lidar.yujinrobot.com/). 
 
+##### parameter
+  - `lidar_ip : 192.168.1.250`
+  - `min_z : -0.2`
+  - `max_z : 2.0`
+  - `min_y : -35.0`
+  - `max_y : 35.0`
+  - `min_x : -35.0`
+  - `max_x : 35.0`
+  - `min_range : 0`
+  - `max_range : 35.0`
+  - `min_vertical_angle : -40`
+  - `max_vertical_angle : 40`
+  - `min_horizontal_angle : -180`
+  - `max_horizontal_angle : 180`
+  - `filter_level : 30.0`
+  - `extrinsic_transform(x, y, z, roll. pitch, yaw) : 0, 0, 0.07, 0, 0, 0`
+  - `scan_mode : 1`
+
 You can find the referenced GitHub repository at https://github.com/yujinrobot/yujin_lidar_v2/tree/main/driver_ros2_foxy_ubuntu2004/yrl3_v2_ros2_package.
 
 - lidar source code
