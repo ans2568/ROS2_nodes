@@ -1,7 +1,5 @@
 FROM ros:noetic
 
-ENV ROS_HOSTNAME=localhost
-ENV ROS_MASTER_URI=http://localhost:11311
 
 RUN apt-get update && apt-get install ros-noetic-laser-assembler python-is-python3 git wget build-essential pkg-config \
 	ros-${ROS_DISTRO}-laser-assembler unzip libboost-dev libflann-dev libvtk7-dev libeigen3-dev libparmetis-dev \
@@ -28,4 +26,8 @@ WORKDIR /catkin_ws
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && catkin_make -DCATKIN_WHITELIST_PACKAGES="lego_loam;cloud_msgs"
 RUN chmod +x src/yrl_to_cloud/src/yrl2pc.py
 RUN echo '. /opt/ros/${ROS_DISTRO}/setup.bash' >> ~/.bashrc
+
+ENV ROS_HOSTNAME=192.168.127.104
+ENV ROS_IP=192.168.127.104
+ENV ROS_MASTER_URI=http://192.168.127.104:11311
 CMD ["/bin/bash", "-c", "cd /catkin_ws && . devel/setup.bash && roslaunch yrl_to_cloud assemble.launch"]

@@ -103,7 +103,7 @@ int main(int argc, char **argv)
   // THIS WILL BE USED TO CONNECT LIDAR
   instance->SetIPAddrParam(IPAddress);
   //========================================================================
-
+  instance->SetVerticalModeParam(4);
   //== 3. START DRIVER =====================================================
   int ret = instance->ConnectTOYRL3V2();
   if (ret == -1)
