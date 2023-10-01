@@ -9,12 +9,16 @@ RUN mkdir -p /ros2_ws/src
 COPY . /ros2_ws/
 WORKDIR /ros2_ws/src
 RUN git clone -b ${ROS_DISTRO} https://github.com/micro-ROS/micro_ros_setup.git
+RUN git clone https://github.com/RoverRobotics-forks/serial-ros2.git
+RUN git clone https://github.com/roasinc/mi_ros2.git
 WORKDIR /ros2_ws/
 RUN apt-get update && rosdep update
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && colcon build
 RUN . install/setup.sh && ros2 run micro_ros_setup create_agent_ws.sh && ros2 run micro_ros_setup build_agent.sh
 RUN vcs import src < dependencies.repos
+COPY accessories.launch.py /ros2_ws/src/jackal_robot/launch/accessories.launch.py
+COPY bringup.launch.py /ros2_ws/src/jackal_robot/launch/bringup.launch.py
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && colcon build
 COPY control.yaml /ros2_ws/src/jackal/jackal_control/config/control.yaml
