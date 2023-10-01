@@ -54,3 +54,22 @@ cd ~/ROS2_nodes/turtlebot3/laser_avoidance_node
 docker build -t tb3_laser_avoidance_node .
 docker run -it -d --network=host --privileged tb3_laser_avoidance_node
 ```
+
+### speaker_node
+
+This node that uses a speaker in turtlebot3
+
+- speaker_node source code
+- Dockerfile
+- human_detect.wav
+
+Subscribe Topic
+  - `/label` : std_msgs/String
+
+**How To Usage**
+```bash
+cd ~/ROS2_nodes/turtlebot3/speaker_node
+
+docker build -t tb3_speaker_node .
+docker run -it -d --network=host --privileged -v /dev:/dev tb3_speaker_node
+```
