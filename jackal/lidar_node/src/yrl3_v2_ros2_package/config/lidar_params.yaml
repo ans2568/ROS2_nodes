@@ -1,16 +1,16 @@
 yrl3_v2_ros2_node:
   ros__parameters:
     lidar_ip: "192.168.1.250"
-    min_z: -0.2
-    max_z: 0.0
-    min_y: -5.0
-    max_y: 5.0
-    min_x: 0.1
-    max_x: 5.0
+    min_z: 0
+    max_z: 5.0
+    min_y: -35.0
+    max_y: 35.0
+    min_x: -35.0
+    max_x: 35.0
     min_range: 0.0
-    max_range: 5.0
+    max_range: 35.0
     min_vertical_angle: -40.0
-    max_vertical_angle: 10.0
+    max_vertical_angle: 40.0
     min_horizontal_angle: -180.0
     max_horizontal_angle: 180.0
     filter_level: 30.0
