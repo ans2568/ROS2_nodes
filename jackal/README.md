@@ -47,7 +47,38 @@ docker run -it -d --network=host --privileged jackal_image_subscriber
 
 ### lidar_node
 
+**`note : There is two lidar node. One is Yujin LiDAR and the other is Ouster LiDAR`**
+
+#### Ouster LiDAR
+
+```
+it requires network setting(static IP)
+
+IPv4 : 192.168.10.99/24
+```
+
+Publish Topic
+  - `/ouster/points` : sensor_msgs/msg/PointCloud2
+  - `/ouster/scan` : sensor_msgs/msg/LaserScan
+  - `/ouster/imu` : sensor_msgs/Imu
+  - **`More information please visit github : https://github.com/ros-drivers/ros2_ouster_drivers`**
+
+**How To Usage**
+```bash
+cd ~/ROS2_nodes/jackal/lidar_node
+
+docker build -t ouster_lidar --rm -f ouster.dockerfile .
+docker run -it -d --network=host --privileged ouster_lidar
+```
+
+#### Yujin LiDAR
 This node runs the 3D Lidar using the source code provided by [Yujin Lidar](http://lidar.yujinrobot.com/). 
+
+```
+it requires network setting(static IP)
+
+IPv4 : 192.168.1.250/24
+```
 
 ##### parameter
   - `lidar_ip : 192.168.1.250`
@@ -81,8 +112,8 @@ Publish Topic
 ```bash
 cd ~/ROS2_nodes/jackal/lidar_node
 
-docker build -t jackal_lidar .
-docker run -it -d --network=host --privileged jackal_lidar
+docker build -t yujin_lidar -f yujin.dockerfile .
+docker run -it -d --network=host --privileged yujin_lidar
 ```
 
 ### LeGO-LOAM_node
