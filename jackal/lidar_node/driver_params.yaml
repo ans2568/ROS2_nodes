@@ -47,11 +47,11 @@ ouster/os_driver:
     # assigned.
     imu_port: 7503
     # sensor_frame[optional]: name to use when referring to the sensor frame.
-    sensor_frame: base_link
+    sensor_frame: os_sensor
     # lidar_frame[optional]: name to use when referring to the lidar frame.
     lidar_frame: os_lidar
     # imu_frame[optional]: name to use when referring to the imu frame.
-    imu_frame: imu_link
+    imu_frame: os_imu
     # point_cloud_frame[optional]: which frame of reference to use when
     # generating PointCloud2 or LaserScan messages, select between the values of
     # lidar_frame and sensor_frame.
