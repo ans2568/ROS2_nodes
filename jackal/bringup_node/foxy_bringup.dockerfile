@@ -22,4 +22,5 @@ COPY bringup.launch.py /ros2_ws/src/jackal_robot/launch/bringup.launch.py
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && rosdep install --from-paths src --ignore-src --rosdistro=${ROS_DISTRO} -y
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && colcon build
 COPY control.yaml /ros2_ws/src/jackal/jackal_control/config/control.yaml
+COPY jackal.urdf.xacro /ros2_ws/src/jackal/jackal_description/urdf/jackal.urdf.xacro
 CMD ["/bin/bash", "-c", "export FASTRTPS_DEFAULT_PROFILES_FILE=fastrtps-profile.xml && . install/setup.bash && ros2 launch jackal_robot bringup.launch.py"]
