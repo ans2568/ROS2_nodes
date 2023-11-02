@@ -37,9 +37,6 @@ def generate_launch_description():
     ouster_ns_arg = DeclareLaunchArgument(
         'ouster_ns', default_value='ouster')
 
-    rviz_enable = LaunchConfiguration('viz')
-    rviz_enable_arg = DeclareLaunchArgument('viz', default_value='False')
-
     os_driver_name = LaunchConfiguration('os_driver_name')
     os_driver_name_arg = DeclareLaunchArgument(
         'os_driver_name', default_value='os_driver')
@@ -74,18 +71,6 @@ def generate_launch_description():
         )
     )
 
-    urdf = 'ouster.urdf.xml'
-    with open(urdf, 'r') as infp:
-        robot_desc = infp.read()
-
-    state_publisher = Node(
-            package='robot_state_publisher',
-            executable='robot_state_publisher',
-            output='screen',
-            parameters=[{'robot_description' : robot_desc}],
-            arguments=[urdf]
-    )
-
     sensor_finalized_event = RegisterEventHandler(
         OnStateTransition(
             target_lifecycle_node=os_driver, goal_state='finalized',
@@ -98,22 +83,12 @@ def generate_launch_description():
         )
     )
 
-    rviz_launch_file_path = \
-        Path(ouster_ros_pkg_dir) / 'launch' / 'rviz.launch.py'
-    rviz_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource([str(rviz_launch_file_path)]),
-        condition=IfCondition(rviz_enable)
-    )
-
     return launch.LaunchDescription([
         params_file_arg,
         ouster_ns_arg,
-        rviz_enable_arg,
         os_driver_name_arg,
-        rviz_launch,
         os_driver,
         sensor_configure_event,
         sensor_activate_event,
         sensor_finalized_event,
-        state_publisher
     ])
